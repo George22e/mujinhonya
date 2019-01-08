@@ -33,19 +33,19 @@ try:
         if detected == 1:
             print('動体を検知しました。')
 
-            # # 焦電センサが動体を感知したら、PiCameraを起動して写真撮影
-            # print('動体を検知。写真を撮影します。')
-            # now_time = datetime.datetime.now()
-            # print(now_time)
-            # image_name = 'motion.captured_{0:%Y%m%d-%H%M%S}.png'.format(now_time)
-            # print(image_name)
+            # 焦電センサが動体を感知したら、PiCameraを起動して写真撮影
+            print('動体を検知。写真を撮影します。')
+            now_time = datetime.datetime.now()
+            print(now_time)
+            image_name = 'motion.captured_{0:%Y%m%d-%H%M%S}.png'.format(now_time)
+            print(image_name)
 
-            # with picamera.PiCamera() as camera:
-            #     camera.hflip = True
-            #     camera.vflip = True
-            #     camera.resolution = (1024, 768)
-            #     camera.capture(image_name)
-            #     print('captured')
+            with picamera.PiCamera() as camera:
+                camera.hflip = True
+                camera.vflip = True
+                camera.resolution = (1024, 768)
+                camera.capture(image_name)
+                print('captured')
 
             #     print('requesting')
             #     with open(image_name, 'rb') as f:
@@ -56,7 +56,7 @@ try:
             # print('Delete the image')
             # Path(image_name).unlink()
 
-        sleep(3)
+        sleep(10)
 
 except KeyboardInterrupt:
     print("\nCtrl + C により検出が停止されました。")
