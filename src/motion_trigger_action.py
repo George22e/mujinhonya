@@ -5,7 +5,7 @@ from pathlib import Path
 from time import sleep
 
 import datetime
-import yaml
+# import yaml
 import RPi.GPIO as GPIO
 import picamera
 import requests
