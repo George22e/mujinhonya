@@ -56,7 +56,7 @@ try:
             # print('Delete the image')
             # Path(image_name).unlink()
 
-        sleep(1)
+        sleep(3)
 
 except KeyboardInterrupt:
     print("\nCtrl + C により検出が停止されました。")
