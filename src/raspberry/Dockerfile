@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian:jessie
 
-RUN apt-get update \
+RUN apt-get update && \
   apt-get install python python-pip python-dev gcc make
 
 RUN pip install rpi.gpio
