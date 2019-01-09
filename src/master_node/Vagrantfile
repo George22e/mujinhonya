@@ -1,0 +1,36 @@
+# coding: utf-8
+# -*- mode: ruby -*-
+#
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(2) do |config|
+  vm_name = "master"
+
+  config.vm.define vm_name do |s|
+    s.vm.box = "ubuntu/xenial64"
+    s.vm.hostname = vm_name
+
+    # set ip address
+    private_ip = "192.168.33.140"
+    s.vm.network "private_network", ip: private_ip
+    
+    # set port forward
+    s.vm.network :forwarded_port, host: 2222, guest: 22
+
+    s.vm.provider "virtualbox" do |v|
+      v.gui = false
+      v.cpus = 2
+      v.memory = 1024
+    end
+
+    # Set proxy for vagrant plugin
+    if Vagrant.has_plugin?("vagrant-proxyconf")
+      s.proxy.http     = "{proxy}"
+      s.proxy.https    = "{proxy}"
+      s.proxy.no_proxy = "localhost,127.0.0.1,192.168.33.140,10.96.0.0/12,10.244.0.0/16"
+    end
+
+    s.vm.provision :shell, :path => "setup.sh"
+  end
+end
+
